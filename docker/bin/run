@@ -2,6 +2,17 @@
 
 cd $(dirname $0)/../..
 
+CONFIGDIR=$PWD/docker/etc/phpmyadmin
+
+if [[ ! -d $CONFIGDIR ]]; then
+   mkdir -p $CONFIGDIR
+fi
+
+if [[ ! -f $CONFIGDIR/config.inc.php ]]; then
+    touch $CONFIGDIR/config.inc.php
+fi
+
+
 docker rm -f phpmyadmin > /dev/null 2>&1
 
 docker run -d \

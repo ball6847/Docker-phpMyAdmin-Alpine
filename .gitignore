@@ -1,0 +1,2 @@
+*.swp
+docker/etc/phpmyadmin/config.inc.php
