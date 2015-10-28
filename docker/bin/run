@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd $(dirname $0)/../..
+
+docker rm -f phpmyadmin > /dev/null 2>&1
+
+docker run -d \
+    --name phpmyadmin \
+    --restart=always \
+    -v $PWD/docker/etc/phpmyadmin/config.inc.php:/www/phpmyadmin/config.inc.php \
+    -v $PWD/docker/bin/start.sh:/start.sh \
+    -p 3380:80 \
+    timhaak/phpmyadmin-alpine
