@@ -1,8 +1,9 @@
-phpmyadmin:
+version: "2"
+
+services:
+  phpmyadmin:
     image: timhaak/phpmyadmin-alpine
     container_name: phpmyadmin
-    restart: always
-    environment:
-        - VIRTUAL_HOST=phpmyadmin.dev
+    restart: unless-stopped
     volumes:
-        - ./start.sh:/start.sh
+      - ./start.sh:/start.sh
